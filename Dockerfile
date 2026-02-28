@@ -34,8 +34,8 @@ WORKDIR /app
 ENV NODE_ENV=production
 ENV NEXT_TELEMETRY_DISABLED=1
 
-# Install openssl for Prisma
-RUN apk add --no-cache openssl
+# Install openssl and su-exec
+RUN apk add --no-cache openssl su-exec
 
 RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nextjs
@@ -51,7 +51,6 @@ COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
 COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 
 # Copy Prisma schema and engines/CLI for runtime migrations
-# We copy them to /app/prisma specifically
 COPY --from=builder --chown=nextjs:nodejs /app/prisma /app/prisma
 COPY --from=builder --chown=nextjs:nodejs /app/node_modules/prisma /app/node_modules/prisma
 COPY --from=builder --chown=nextjs:nodejs /app/node_modules/@prisma /app/node_modules/@prisma
@@ -62,8 +61,6 @@ COPY --from=builder --chown=nextjs:nodejs /app/package.json /app/package.json
 # Copy start script
 COPY --from=builder --chown=nextjs:nodejs /app/start.sh /app/start.sh
 RUN chmod +x /app/start.sh
-
-USER nextjs
 
 EXPOSE 3000
 
