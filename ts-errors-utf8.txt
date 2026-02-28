@@ -1,0 +1,4 @@
+﻿src/app/api/admin/bookings/route.ts(4,10): error TS2305: Module '"@prisma/client"' has no exported member 'Booking'.
+src/app/api/checkout/route.ts(6,5): error TS2322: Type '"2024-12-18.acacia"' is not assignable to type '"2026-02-25.clover"'.
+src/app/api/webhook/route.ts(7,5): error TS2322: Type '"2024-12-18.acacia"' is not assignable to type '"2026-02-25.clover"'.
+src/lib/prisma.ts(1,10): error TS2305: Module '"@prisma/client"' has no exported member 'PrismaClient'.

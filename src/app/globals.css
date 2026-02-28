@@ -1,0 +1,39 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #1F362A; /* Mörkgrön (Dark Green) */
+  --color-secondary: #141A25; /* Midnattsblå (Midnight Blue) */
+  --color-accent: #C29A6E; /* Trä/Beige (Wood) */
+  --color-background: #FDFCF8; /* Naturvit/Varm (Warm White) */
+  --color-surface: #FFFFFF; /* Ren Vit (Pure White) */
+  --color-text: #272C28; /* Mörkgrå-grön (Dark Greyish Green) */
+  --color-text-muted: #647068; /* Dämpad text (Muted Text) */
+
+  --font-sans: var(--font-outfit), sans-serif;
+  --font-serif: var(--font-playfair), serif;
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-text);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif);
+}
+
+/* Animations that add premium feel */
+@keyframes slideUpFade {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slide-up {
+  animation: slideUpFade 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}

@@ -1,0 +1,67 @@
+﻿
+> trysil@0.1.0 build
+> next build
+
+Ôû▓ Next.js 16.1.6 (Turbopack)
+- Environments: .env
+
+  Creating an optimized production build ...
+Ô£ô Compiled successfully in 1970.0ms
+  Running TypeScript ...
+node.exe : Failed to c
+ompile.
+At line:1 char:1
++ & "C:\Program Files\
+nodejs/node.exe" "C:\P
+rogram Files\nodejs/no
+de_mo ...
++ ~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~
+~~~~~
+    + CategoryInfo    
+          : NotSpeci  
+  fied: (Failed to    
+ compile.:String)     
+[], RemoteExcepti    o
+n
+    + FullyQualifiedE 
+   rrorId : NativeCo  
+  mmandError
+ 
+
+./prisma.config.ts:4:3
+0
+Type error: Cannot fin
+d module 'prisma/confi
+g' or its correspondin
+g type declarations.
+
+[0m [90m 2 |[39m [
+90m// npm install --sa
+ve-dev prisma dotenv[
+39m
+ [90m 3 |[39m [36mi
+mport[39m [32m"doten
+v/config"[39m[33m;[
+39m
+[31m[1m>[22m[39m[
+90m 4 |[39m [36mimpo
+rt[39m { defineConfig
+ } [36mfrom[39m [32
+m"prisma/config"[39m
+[33m;[39m
+ [90m   |[39m       
+                      
+ [31m[1m^[22m[39m
+ [90m 5 |[39m
+ [90m 6 |[39m [36me
+xport[39m [36mdefaul
+t[39m defineConfig({
+ [90m 7 |[39m   sche
+ma[33m:[39m [32m"pr
+isma/schema.prisma"[3
+9m[33m,[39m[0m
+Next.js build worker e
+xited with code: 1 and
+ signal: null
