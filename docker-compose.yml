@@ -1,0 +1,15 @@
+services:
+  app:
+    build: .
+    ports:
+      - "3000:3000"
+    env_file:
+      - .env
+    environment:
+      - DATABASE_URL=file:/app/database/prod.db
+    volumes:
+      - trysil_data:/app/database
+    restart: always
+
+volumes:
+  trysil_data:
