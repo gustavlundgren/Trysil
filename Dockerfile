@@ -46,21 +46,22 @@ COPY --from=builder /app/public ./public
 RUN mkdir .next
 RUN chown nextjs:nodejs .next
 
-# Copy package.json for Prisma configuration and standalone files
-COPY --from=builder --chown=nextjs:nodejs /app/package.json ./package.json
-
 # Automatically leverage output traces to reduce image size
 COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
 COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 
 # Copy Prisma schema and engines/CLI for runtime migrations
-COPY --from=builder --chown=nextjs:nodejs /app/prisma ./prisma
-COPY --from=builder --chown=nextjs:nodejs /app/node_modules/prisma ./node_modules/prisma
-COPY --from=builder --chown=nextjs:nodejs /app/node_modules/@prisma ./node_modules/@prisma
+# We copy them to /app/prisma specifically
+COPY --from=builder --chown=nextjs:nodejs /app/prisma /app/prisma
+COPY --from=builder --chown=nextjs:nodejs /app/node_modules/prisma /app/node_modules/prisma
+COPY --from=builder --chown=nextjs:nodejs /app/node_modules/@prisma /app/node_modules/@prisma
+
+# Copy package.json again to be sure (it's small)
+COPY --from=builder --chown=nextjs:nodejs /app/package.json /app/package.json
 
 # Copy start script
-COPY --from=builder --chown=nextjs:nodejs /app/start.sh ./
-RUN chmod +x start.sh
+COPY --from=builder --chown=nextjs:nodejs /app/start.sh /app/start.sh
+RUN chmod +x /app/start.sh
 
 USER nextjs
 
